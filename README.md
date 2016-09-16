@@ -1,6 +1,8 @@
 # TemperatureMonitor
 A simple console Java application intended for body temperature recording.
 
+Data about date, time and temperature value for each measure is recorded into a file on user's desktop.
+
 The application takes 2 arguments:
 
 1. Waiting time (in minutes): the time needed to measure body temperature.
