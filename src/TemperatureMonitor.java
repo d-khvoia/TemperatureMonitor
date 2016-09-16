@@ -49,7 +49,7 @@ public class TemperatureMonitor {
 	}
 	private static void recordTemperature(String filePath) {
 	    @SuppressWarnings("resource")
-	    Scanner sc = new Scanner( System.in );
+	    Scanner sc = new Scanner(System.in);
 	    double temperature;
 	    while(true) {
 	    	try {
