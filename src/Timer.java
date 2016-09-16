@@ -15,18 +15,18 @@ public class Timer extends Thread {
     
     public void run() {
     	long diff;
-		try {
-            while (true) {
-              Thread.sleep(timeShowRate);
-              currentTime += timeShowRate;
-              diff = endTime - currentTime;
-              long minLeft = TimeUnit.MILLISECONDS.toMinutes(diff);
-              long secLeft = diff / 1000 - minLeft * 60;
-              System.out.println("Time left: " + minLeft + " minutes " + secLeft + " seconds. Wait...");
-            }
-		} 
-		catch (InterruptedException e) {
+	try {
+          while (true) {
+             Thread.sleep(timeShowRate);
+             currentTime += timeShowRate;
+             diff = endTime - currentTime;
+             long minLeft = TimeUnit.MILLISECONDS.toMinutes(diff);
+             long secLeft = diff / 1000 - minLeft * 60;
+             System.out.println("Time left: " + minLeft + " minutes " + secLeft + " seconds. Wait...");
+          }
+	} 
+	catch (InterruptedException e) {
 			
-		}
+	}
     }
 }
