@@ -62,7 +62,7 @@ public class TemperatureMonitor {
 	    	   break;
 	        }
 	    	catch (Exception e) {
-	    	    System.out.println("Wrong temperature format!!! Enter a double.");
+	    	    System.out.println("Wrong temperature format!!! Enter a floating-point number.");
 	    	    continue;
 	    	}
 	    }
