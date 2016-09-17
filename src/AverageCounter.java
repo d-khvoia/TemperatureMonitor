@@ -62,7 +62,7 @@ public class AverageCounter {
 	       System.out.println("Average evening (16 p.m. - 23 p.m.) temperature: " + results[2] / results[6]);
 	   if (results[7] != 0)
 	       System.out.println("Average night (0 a.m. - 6 a.m.) temperature: " + results[3] / results[7]);
-	   System.out.println("Total average temperature: " + results[8] + "\nTerminating...");
+	   System.out.println("Total average temperature: " + results[8]);
 	}
 	catch (Exception e) {
 	    System.out.println("Error while reading from file.");
