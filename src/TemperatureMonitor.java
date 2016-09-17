@@ -8,6 +8,7 @@ public class TemperatureMonitor {
 	    try {
                long waitTime = Integer.parseInt(args[0]) * 60000;
                long timeShowRate = Integer.parseInt(args[1]) * 1000;
+               String filePath = inputFilePath();
     	       System.out.println("Put in your temperature meter and wait till beep... ");
    	       Timer timer = new Timer(waitTime, timeShowRate);
    	       timer.start();
@@ -15,7 +16,6 @@ public class TemperatureMonitor {
 	       timer.interrupt();
 	       BeepNotificator beepNotificator = new BeepNotificator();
 	       beepNotificator.start();
-	       String filePath = System.getProperty("user.home") + "/Desktop\\Temperature.txt";
                new Serializer(filePath).recordTemperature();	    
 	       beepNotificator.interrupt();
 	       suggestStatistics(filePath);
@@ -40,6 +40,34 @@ public class TemperatureMonitor {
 	    }
 	    return args;
 	}
+	private static String inputFilePath() {
+	    String filePath = System.getProperty("user.home") + "/Desktop\\Temperature.tmp";
+	    @SuppressWarnings("resource")
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Default file path is the path to the desktop of your user. Do you want to change it? Y/N: ");
+	    String s;
+	    while(true) {
+	        s = sc.nextLine();
+		if (s.equals("Y") || s.equals("y")) {
+		    while(true) {
+		        System.out.print("Enter new file path: ");
+		        try {
+		           filePath = sc.nextLine();
+		           File f = new File(filePath);
+		           f.createNewFile();
+		           return filePath;
+		        }
+		        catch (IOException e){
+		            System.out.print("Invalid file path.\nPlease, enter correct file path: ");
+		        }
+		    }
+		}
+		else if (s.equals("N") || s.equals("n")) {
+		    return filePath;
+		}
+		else System.out.print("Wrong input. Please, enter either \"Y\" or \"N\" character: ");
+	    }
+	}
 	private static void suggestStatistics(String filePath) {
 	    @SuppressWarnings("resource")
 	    Scanner sc = new Scanner(System.in);
@@ -47,11 +75,11 @@ public class TemperatureMonitor {
 	    String s;
 	    while(true) {
 	        s = sc.nextLine();
-	        if (s.equals("Y")) {
+	        if (s.equals("Y") || s.equals("y")) {
 	            showAverageTemp(filePath);
 	            break;
 		}
-		else if (s.equals("N")) {
+		else if (s.equals("N") || s.equals("n")) {
 		    System.out.println("Terminating...");
 		    System.exit(0);
 	        }
