@@ -12,4 +12,6 @@ The application takes 2 arguments:
 
 If argument(s) are missing, default values of 10 minutes wait time and 30 seconds time show rate will be used.
 
+A user is notified when it is time to enter temperature value with both on-screen message and beeps.
+
 There is an option of showing temperature statistics: an average temperature during morning, afternoon, evening and night separately, as well as total average temperature measured.
