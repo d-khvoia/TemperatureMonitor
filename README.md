@@ -3,6 +3,8 @@ A simple console Java application intended for body temperature recording.
 
 Data about date, time and temperature value for each measure is recorded into a file on user's desktop.
 
+Default file path is the path to "Temperature.tmp" file on user's desktop. You can change file path during execution.
+
 The application takes 2 arguments:
 
 1. Waiting time (in minutes): the time needed to measure body temperature.
