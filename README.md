@@ -8,4 +8,6 @@ The application takes 2 arguments:
 1. Waiting time (in minutes): the time needed to measure body temperature.
 2. Remaining time show rate (in seconds): each user-defined number of seconds, a message will appear in console showing how long you still need to wait.
 
+If argument(s) are missing, default values of 10 minutes wait time and 30 seconds time show rate will be used.
+
 There is an option of showing temperature statistics: an average temperature during morning, afternoon, evening and night separately, as well as total average temperature measured.
