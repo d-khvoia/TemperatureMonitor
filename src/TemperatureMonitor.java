@@ -32,7 +32,7 @@ public class TemperatureMonitor {
 	private static boolean isValidTemperature(float temp) {
 	    if (temp >= 30.0 && temp <= 45.0)
 		return true;
-		return false;
+	    return false;
 	}
 	private static void recordTemperature(String filePath) {
 	    @SuppressWarnings("resource")
