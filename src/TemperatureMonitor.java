@@ -18,10 +18,10 @@ public class TemperatureMonitor {
    	       timer.start();
 	       Thread.sleep(waitTime);
 	       timer.interrupt();
-	       BeepNotificator beepNotificator = new BeepNotificator();
-	       beepNotificator.start();
+	       Notificator n = new Notificator();
+	       n.start();
                new Serializer(filePath).recordTemperature();	    
-	       beepNotificator.interrupt();
+	       n.interrupt();
 	       suggestStatistics(filePath);
 	       System.out.print("Any user input will exit the application: ");
 	       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
