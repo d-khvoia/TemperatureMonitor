@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class TemperatureMonitor {
 
@@ -19,6 +23,10 @@ public class TemperatureMonitor {
                new Serializer(filePath).recordTemperature();	    
 	       beepNotificator.interrupt();
 	       suggestStatistics(filePath);
+	       System.out.print("Any user input will exit the application: ");
+	       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	       in.readLine();
+	       System.out.println("Terminating...");
 	    }
 	    catch (RuntimeException e) {
 		System.out.println("Illegal arguments passed. Arguments represent wait time and show time rate and must be two integer numbers! Terminating...");
