@@ -16,4 +16,4 @@ A user is notified when it is time to enter temperature value with both on-scree
 
 There is an option of showing temperature statistics: an average temperature during morning, afternoon, evening and night separately, as well as total average temperature measured.
 
-Оля.
+~~Оля.~~ Таня.
