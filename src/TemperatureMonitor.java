@@ -13,24 +13,24 @@ public class TemperatureMonitor {
                long waitTime = Integer.parseInt(args[0]) * 60000;
                long timeShowRate = Integer.parseInt(args[1]) * 1000;
                String filePath = inputFilePath();
-    	       System.out.println("Put in your temperature meter and wait till beep... ");
-   	       Timer timer = new Timer(waitTime, timeShowRate);
-   	       timer.start();
-	       Thread.sleep(waitTime);
-	       timer.interrupt();
-	       Notificator n = new Notificator();
-	       n.start();
-               new Serializer(filePath).recordTemperature();	    
-	       n.interrupt();
+    	       recordTemperature(filePath, waitTime, timeShowRate);
 	       suggestStatistics(filePath);
-	       System.out.print("Any user input will exit the application: ");
-	       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-	       in.readLine();
-	       System.out.println("Terminating...");
+	       terminate();
 	    }
 	    catch (RuntimeException e) {
 		System.out.println("Illegal arguments passed. Arguments represent wait time and show time rate and must be two integer numbers! Terminating...");
 	    }
+	}
+	private static void recordTemperature(String filePath, long waitTime, long timeShowRate)  throws InterruptedException {
+  	    System.out.println("Put in your temperature meter and wait till beep... ");
+	    Timer timer = new Timer(waitTime, timeShowRate);
+	    timer.start();
+	    Thread.sleep(waitTime);
+	    timer.interrupt();
+	    Notificator n = new Notificator();
+	    n.start();
+            new Serializer(filePath).inputTemperature();
+            n.interrupt();
 	}
 	private static String[] prepareArgs(String[] args) {
 	    if (args.length == 0) {
@@ -93,5 +93,11 @@ public class TemperatureMonitor {
 	        }
 		else System.out.print("Wrong input. Please, enter either \"Y\" or \"N\" character: ");
 	    }
+	}
+	private static void terminate() throws IOException {
+	    System.out.print("Any user input will exit the application: ");
+	    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	    in.readLine();
+            System.out.println("Terminating...");  
 	}
 }
