@@ -12,7 +12,7 @@ public class Serializer {
     public Serializer(String filePath) {
     	this.filePath = filePath;
     }
-    public void recordTemperature() {
+    public void inputTemperature() {
 	@SuppressWarnings("resource")
 	Scanner sc = new Scanner(System.in);
 	float temperature;
