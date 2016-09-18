@@ -84,8 +84,7 @@ public class TemperatureMonitor {
 	    while(true) {
 	        s = sc.nextLine();
 	        if (s.equals("Y") || s.equals("y")) {
-	            AverageCounter ac = new AverageCounter(filePath);
-	            ac.showAverageTemp(filePath);
+	            new AverageCounter(filePath).showAverageTemp();
 	            break;
 		}
 		else if (s.equals("N") || s.equals("n")) {
