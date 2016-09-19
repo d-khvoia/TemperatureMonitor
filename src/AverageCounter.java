@@ -11,6 +11,26 @@ public class AverageCounter {
     	this.filePath = filePath;
     } 
     
+    public void showAverageTemp() {
+	try {
+	   InputStream fis = new FileInputStream(filePath);
+	   InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+	   br = new BufferedReader(isr);
+           getAverages();
+	   if (results[4] != 0)
+	       System.out.println("Average morning (7 a.m. - 12 p.m.) temperature: " + results[0] / results[4]);
+	   if (results[5] != 0)
+	       System.out.println("Average afternoon (13 p.m. - 15 p.m.) temperature: " + results[1] / results[5]);
+	   if (results[6] != 0)
+	       System.out.println("Average evening (16 p.m. - 23 p.m.) temperature: " + results[2] / results[6]);
+	   if (results[7] != 0)
+	       System.out.println("Average night (0 a.m. - 6 a.m.) temperature: " + results[3] / results[7]);
+	   System.out.println("Total average temperature: " + results[8]);
+	}
+	catch (Exception e) {
+	    System.out.println("Error while reading from file.");
+	}
+    }
     private void getAverages() {
 	String line;
 	int count = 0;
@@ -37,7 +57,7 @@ public class AverageCounter {
             	   results[2] += temp;
                }
            }
-		   results[8] = (results[0] + results[1] + results[2] + results[3]) / (results[4] + results[5] + results[6] + results[7]);
+		   results[8] = getSum(0, 3) / getSum(4, 7);
         }
 	catch (Exception e) {
 	    System.out.println("Error while reading from file. Terminating...");
@@ -48,24 +68,10 @@ public class AverageCounter {
             return true;
 	return false;
     }
-    public void showAverageTemp() {
-	try {
-	   InputStream fis = new FileInputStream(filePath);
-	   InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
-	   br = new BufferedReader(isr);
-           getAverages();
-	   if (results[4] != 0)
-	       System.out.println("Average morning (7 a.m. - 12 p.m.) temperature: " + results[0] / results[4]);
-	   if (results[5] != 0)
-	       System.out.println("Average afternoon (13 p.m. - 15 p.m.) temperature: " + results[1] / results[5]);
-	   if (results[6] != 0)
-	       System.out.println("Average evening (16 p.m. - 23 p.m.) temperature: " + results[2] / results[6]);
-	   if (results[7] != 0)
-	       System.out.println("Average night (0 a.m. - 6 a.m.) temperature: " + results[3] / results[7]);
-	   System.out.println("Total average temperature: " + results[8]);
-	}
-	catch (Exception e) {
-	    System.out.println("Error while reading from file.");
-	}
+    private float getSum(int startIndex, int endIndex) {
+	float sum = 0;
+	for (int i = startIndex; i <= endIndex; i++)
+	     sum += results[i];
+	     return sum;
     }
 }
