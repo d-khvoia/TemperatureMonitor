@@ -31,7 +31,7 @@ public class AverageCounter {
 	    System.out.println("Error while reading from file.");
 	}
     }
-    private void getAverages() {
+    private void calculateAverages() {
 	String line;
 	int count = 0;
 	results = new float[9];
