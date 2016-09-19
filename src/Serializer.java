@@ -23,7 +23,9 @@ public class Serializer {
 	           DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	           File f = new File(filePath);
 	           f.createNewFile();
+	           f.setWritable(true);
 	           Files.write(Paths.get(filePath), (dateFormat.format(new Date()) + " — " + temperature + "\r\n===========================================\r\n").getBytes(), StandardOpenOption.APPEND);
+	           f.setReadOnly();
 	           break;
 	       }
 	       throw new Exception();
