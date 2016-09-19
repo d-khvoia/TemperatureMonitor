@@ -16,7 +16,7 @@ public class AverageCounter {
 	   InputStream fis = new FileInputStream(filePath);
 	   InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
 	   br = new BufferedReader(isr);
-           getAverages();
+           calculateAverages();
 	   if (results[4] != 0)
 	       System.out.println("Average morning (7 a.m. - 12 p.m.) temperature: " + results[0] / results[4]);
 	   if (results[5] != 0)
