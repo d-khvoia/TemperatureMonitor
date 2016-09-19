@@ -72,6 +72,6 @@ public class AverageCounter {
 	float sum = 0;
 	for (int i = startIndex; i <= endIndex; i++)
 	     sum += results[i];
-	     return sum;
+	return sum;
     }
 }
